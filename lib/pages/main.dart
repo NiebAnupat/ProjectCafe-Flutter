@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'loginPage.dart';
 import 'menuPage.dart';
+import 'homePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: const MenuPage(),
+      home: const HomePage(),
     );
   }
 }

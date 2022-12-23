@@ -1,0 +1,63 @@
+import 'package:cafeapp/pages/ordersPage.dart';
+import 'package:flutter/material.dart';
+import 'loginPage.dart';
+import 'ordersPage.dart';
+import 'menuPage.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  void _navigateBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List<Widget> _buttonAction = [
+    MenuPage(),
+    OrdersPage(),
+    Text('ประวัติ'),
+    LoginPage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _buttonAction[_selectedIndex],
+      // Bottom Bar
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.brown,
+        selectedItemColor: Colors.grey[300],
+        showUnselectedLabels: false,
+        currentIndex: _selectedIndex,
+        onTap: _navigateBottomBar,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            label: 'เมนู',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'สรุปรายการ',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'ประวัติ',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.logout),
+            label: 'ออกจากระบบ',
+          ),
+        ],
+      ),
+    );
+  }
+}
