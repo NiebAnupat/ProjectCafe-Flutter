@@ -2,30 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cafeapp/components/menuCafe.dart';
 
-// Stateful
-class MenuPage extends StatefulWidget {
-  const MenuPage({super.key});
-
-  @override
-  State<MenuPage> createState() => _MenuPageState();
-}
-
-class _MenuPageState extends State<MenuPage> {
-  //Menu list
-  List<menuCafe> menu = [
-    menuCafe("ลาเต้", "40"),
-    menuCafe("มอคค่า", "50"),
-    menuCafe("คาปูชิโน่", "60"),
-  ];
+class DetailPage extends StatelessWidget {
+  const DetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Title and back button
+      appBar: AppBar(
+        title: Text(
+          "           รายละเอียด",
+          style: GoogleFonts.notoSerifThai(fontSize: 25),
+        ),
+      ),
+      // Content
+
       body: content(),
     );
   }
 
   Widget content() {
+    // List of orders
+    List<menuCafe> menu = [
+      menuCafe("ลาเต้", "40"),
+      menuCafe("มอคค่า", "50"),
+      menuCafe("คาปูชิโน่", "60"),
+    ];
+
     return Padding(
       padding: const EdgeInsets.all(5),
       child: ListView.builder(
@@ -50,38 +53,15 @@ class _MenuPageState extends State<MenuPage> {
                 title: Text(food.name,
                     style: GoogleFonts.notoSerifThai(fontSize: 18)),
                 subtitle: Text(
-                  "ราคา " + food.price + " บาท",
+                  "ราคา " + food.price + " บาท" + " จำนวน ",
                   style: GoogleFonts.notoSerifThai(fontSize: 15),
-                ),
-
-                // Add menu button
-                trailing: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.add),
                 ),
               ),
             ),
           );
-
-          // Card(
-          //   color: Colors.brown[200],
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(1.5),
-          //     child: ListTile(
-          //       title: Text(food.name, style: TextStyle(fontSize: 18)),
-          //       subtitle: Text("ราคา " + food.price + " บาท",
-          //           style: TextStyle(fontSize: 15)),
-
-          //       // Add menu button
-          //       trailing: IconButton(
-          //         onPressed: () {},
-          //         icon: Icon(Icons.add),
-          //       ),
-          //     ),
-          //   ),
-          // );
         },
       ),
     );
+    ;
   }
 }

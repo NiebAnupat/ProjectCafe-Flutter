@@ -61,7 +61,8 @@ class _LoginPageState extends State<LoginPage> {
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: "รหัสพนักงาน"),
+                              hintText: "รหัสพนักงาน",
+                              hintStyle: GoogleFonts.notoSerifThai()),
                         ),
                       ),
                     ),
@@ -84,7 +85,9 @@ class _LoginPageState extends State<LoginPage> {
                           child: TextField(
                             obscureText: true,
                             decoration: InputDecoration(
-                                border: InputBorder.none, hintText: "รหัสผ่าน"),
+                                border: InputBorder.none,
+                                hintText: "รหัสผ่าน",
+                                hintStyle: GoogleFonts.notoSerifThai()),
                           ),
                         ),
                       ),
@@ -100,19 +103,5 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ));
-  }
-
-  Widget newElevatedButton() {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text('เข้าสู่ระบบ'),
-      style: ElevatedButton.styleFrom(
-        primary: Colors.brown[400],
-        onPrimary: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-    );
   }
 }

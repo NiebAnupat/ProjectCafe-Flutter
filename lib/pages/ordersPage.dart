@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:cafeapp/components/menuCafe.dart';
 
 // Stateful
@@ -15,7 +16,7 @@ class _OrdersPageState extends State<OrdersPage> {
     menuCafe("ลาเต้", "40"),
     menuCafe("มอคค่า", "50"),
     menuCafe("คาปูชิโน่", "60"),
-    menuCafe("คาปูชิโน่", "60"),
+    menuCafe("นมสด", "60"),
   ];
 
   @override
@@ -52,10 +53,11 @@ class _OrdersPageState extends State<OrdersPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(1.5),
                       child: ListTile(
-                        title: Text(food.name, style: TextStyle(fontSize: 18)),
+                        title: Text(food.name,
+                            style: GoogleFonts.notoSerifThai(fontSize: 18)),
                         subtitle: Text(
                           "จำนวน ",
-                          style: TextStyle(fontSize: 15),
+                          style: GoogleFonts.notoSerifThai(fontSize: 15),
                         ),
 
                         // delete menu button
@@ -74,14 +76,15 @@ class _OrdersPageState extends State<OrdersPage> {
             Container(
               child: Row(
                 children: [
-                  Text("ราคารวม " + " บาท", style: TextStyle(fontSize: 18)),
+                  Text("  ราคารวม " + " บาท",
+                      style: GoogleFonts.notoSerifThai(fontSize: 18)),
                   Spacer(),
 
                   // Order button
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Text("สั่งอาหาร"),
-                  ),
+                      onPressed: () {},
+                      child: Text("สั่งอาหาร",
+                          style: GoogleFonts.notoSerifThai(fontSize: 16))),
                 ],
               ),
             ),

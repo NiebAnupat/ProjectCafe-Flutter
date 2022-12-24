@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:cafeapp/pages/homePage.dart';
+import 'package:cafeapp/pages/menuPage.dart';
 
 class LoginButton extends StatelessWidget {
   final Function()? onTap;
@@ -8,9 +11,16 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (() {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ),
+        );
+      }),
       child: Container(
-        padding: EdgeInsets.all(25),
+        padding: EdgeInsets.all(15),
         margin: EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
           color: Colors.brown[400],
@@ -19,10 +29,12 @@ class LoginButton extends StatelessWidget {
         child: Center(
           child: Text(
             'เข้าสู่ระบบ',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+            style: GoogleFonts.notoSerifThai(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

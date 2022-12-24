@@ -1,5 +1,7 @@
+import 'package:cafeapp/pages/historyPage.dart';
 import 'package:cafeapp/pages/ordersPage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'loginPage.dart';
 import 'ordersPage.dart';
 import 'menuPage.dart';
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _buttonAction = [
     MenuPage(),
     OrdersPage(),
-    Text('ประวัติ'),
+    HistoryPage(),
     LoginPage(),
   ];
 
@@ -36,6 +38,7 @@ class _HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.brown,
         selectedItemColor: Colors.grey[300],
+        selectedLabelStyle: GoogleFonts.notoSerifThai(),
         showUnselectedLabels: false,
         currentIndex: _selectedIndex,
         onTap: _navigateBottomBar,
@@ -58,6 +61,18 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget LogoutButton() {
+    return IconButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LoginPage()),
+        );
+      },
+      icon: Icon(Icons.logout),
     );
   }
 }
