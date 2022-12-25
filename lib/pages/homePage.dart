@@ -15,10 +15,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _navigateBottomBar(int index) {
     setState(() {
-      _selectedIndex = index;
+      if (index == 3) {
+        Navigator.of(context, rootNavigator: true).pushReplacement(
+            MaterialPageRoute(builder: (context) => new LoginPage()));
+      } else {
+        _selectedIndex = index;
+      }
     });
   }
 
@@ -32,6 +38,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: _buttonAction[_selectedIndex],
       // Bottom Bar
       bottomNavigationBar: BottomNavigationBar(

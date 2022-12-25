@@ -29,7 +29,7 @@ class LoginButton extends StatelessWidget {
         child: Center(
           child: Text(
             'เข้าสู่ระบบ',
-            style: GoogleFonts.notoSerifThai(
+            style: GoogleFonts.notoSansThai(
               textStyle: TextStyle(
                 color: Colors.white,
                 fontSize: 22,

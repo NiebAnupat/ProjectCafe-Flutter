@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "รหัสพนักงาน",
-                              hintStyle: GoogleFonts.notoSerifThai()),
+                              hintStyle: GoogleFonts.notoSansThai()),
                         ),
                       ),
                     ),
