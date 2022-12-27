@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.brown,
         selectedItemColor: Colors.grey[300],
-        selectedLabelStyle: GoogleFonts.notoSerifThai(),
+        selectedLabelStyle: GoogleFonts.notoSansThai(),
         showUnselectedLabels: false,
         currentIndex: _selectedIndex,
         onTap: _navigateBottomBar,

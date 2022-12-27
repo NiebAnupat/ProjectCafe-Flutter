@@ -48,10 +48,10 @@ class _MenuPageState extends State<MenuPage> {
               padding: const EdgeInsets.all(1.5),
               child: ListTile(
                 title: Text(food.name,
-                    style: GoogleFonts.notoSerifThai(fontSize: 18)),
+                    style: GoogleFonts.notoSansThai(fontSize: 18)),
                 subtitle: Text(
                   "ราคา " + food.price + " บาท",
-                  style: GoogleFonts.notoSerifThai(fontSize: 15),
+                  style: GoogleFonts.notoSansThai(fontSize: 15),
                 ),
 
                 // Add menu button
