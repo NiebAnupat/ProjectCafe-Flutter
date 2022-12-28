@@ -9,6 +9,21 @@ List<menuCafe> orders = [
   menuCafe("นมสด", "60"),
 ];
 
+class OrdersList extends StatefulWidget {
+  List<menuCafe> orders = <menuCafe>[];
+  OrdersList({super.key, required this.orders});
+
+  @override
+  State<OrdersList> createState() => _OrdersListState();
+}
+
+class _OrdersListState extends State<OrdersList> {
+  @override
+  Widget build(BuildContext context) {
+    return content();
+  }
+}
+
 Widget content() {
   return Padding(
     padding: const EdgeInsets.all(5),

@@ -10,6 +10,20 @@ List<historyMenu> history = [
   historyMenu("12-12-2565", "500")
 ];
 
+class HistoryList extends StatefulWidget {
+  const HistoryList({super.key});
+
+  @override
+  State<HistoryList> createState() => _HistoryListState();
+}
+
+class _HistoryListState extends State<HistoryList> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 Widget content() {
   return Padding(
     padding: const EdgeInsets.all(5),
