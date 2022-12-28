@@ -44,7 +44,7 @@ Widget content() {
                         color: Colors.grey.withOpacity(0.1),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 2),
+                        offset: const Offset(0, 2),
                       ),
                     ],
                   ),
@@ -57,11 +57,10 @@ Widget content() {
                         "จำนวน ",
                         style: GoogleFonts.notoSansThai(fontSize: 15),
                       ),
-
                       // delete menu button
                       trailing: IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.minimize),
+                        icon: const Icon(Icons.minimize),
                       ),
                     ),
                   ),

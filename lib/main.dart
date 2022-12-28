@@ -3,9 +3,9 @@
 import 'package:cafeapp/pages/detailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'loginPage.dart';
-import 'menuPage.dart';
-import 'homePage.dart';
+import 'pages/loginPage.dart';
+import 'pages/menuPage.dart';
+import 'pages/homePage.dart';
 
 void main() {
   runApp(const MyApp());

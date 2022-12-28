@@ -29,10 +29,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _buttonAction = [
-    MenuPage(),
-    OrdersPage(),
-    HistoryPage(),
-    LoginPage(),
+    const MenuPage(),
+    const OrdersPage(),
+    const HistoryPage(),
+    const LoginPage(),
   ];
 
   @override
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         showUnselectedLabels: false,
         currentIndex: _selectedIndex,
         onTap: _navigateBottomBar,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.menu),
             label: 'เมนู',
@@ -76,10 +76,10 @@ class _HomePageState extends State<HomePage> {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) => const LoginPage()),
         );
       },
-      icon: Icon(Icons.logout),
+      icon: const Icon(Icons.logout),
     );
   }
 }

@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //Login method
-  void loginUser() {}
+  loginUser() {}
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     "Ruen Darunee`s Cafe",
                     style: GoogleFonts.playfairDisplay(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                         color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -38,14 +38,14 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     width: 200,
                     height: 200,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage("assets/images/logo.png"),
                         scale: 4,
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
 
                   //ID input
                   Padding(
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
 
                   // Password input
                   Padding(
@@ -93,11 +93,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   // Login button
                   LoginButton(onTap: loginUser),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                 ],
               ),
             ),

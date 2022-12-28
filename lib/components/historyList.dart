@@ -3,13 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cafeapp/pages/detailPage.dart';
 import 'package:cafeapp/components/historyMenu.dart';
 
-// All orders
-List<historyMenu> history = [
-  historyMenu("12-12-2565", "230"),
-  historyMenu("12-12-2565", "380"),
-  historyMenu("12-12-2565", "500")
-];
-
 class HistoryList extends StatefulWidget {
   const HistoryList({super.key});
 
@@ -25,6 +18,13 @@ class _HistoryListState extends State<HistoryList> {
 }
 
 Widget content() {
+  // All orders
+  List<historyMenu> history = [
+    historyMenu("12-12-2565", "230"),
+    historyMenu("12-12-2565", "380"),
+    historyMenu("12-12-2565", "500")
+  ];
+
   return Padding(
     padding: const EdgeInsets.all(5),
     child: ListView.builder(

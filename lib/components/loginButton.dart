@@ -15,13 +15,13 @@ class LoginButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => const HomePage(),
           ),
         );
       }),
       child: Container(
-        padding: EdgeInsets.all(15),
-        margin: EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.all(15),
+        margin: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
           color: Colors.brown[400],
           borderRadius: BorderRadius.circular(12),
@@ -30,7 +30,7 @@ class LoginButton extends StatelessWidget {
           child: Text(
             'เข้าสู่ระบบ',
             style: GoogleFonts.notoSansThai(
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
