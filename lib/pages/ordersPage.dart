@@ -1,5 +1,7 @@
+import 'package:cafeapp/components/ordersList.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cafeapp/components/class/Orders.dart';
 import 'package:cafeapp/components/ordersList.dart';
 
 // Stateful
@@ -11,15 +13,45 @@ class OrdersPage extends StatefulWidget {
 }
 
 class _OrdersPageState extends State<OrdersPage> {
+  //Menu list
+  List<Orders> orders = [
+    Orders("ลาเต้", "40", "1"),
+    Orders("มอคค่า", "50", "2"),
+    Orders("คาปูชิโน่", "60", "3"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: content(),
+      body: Padding(
+        padding: const EdgeInsets.all(5),
+        child: Container(
+          child: Column(
+            children: [
+              // List of orders
+              Expanded(
+                child: ListView.builder(
+                  itemCount: orders.length,
+                  itemBuilder: (context, i) {
+                    Orders food = orders[i];
+                    return OrdersList(
+                      name: food.name,
+                      price: food.price,
+                      amount: food.amount,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+
       //container order button
       bottomNavigationBar: Container(
         child: Row(
           children: [
-            Text("  ราคารวม " + "1000" + " บาท",
+            Text("  ราคารวม  บาท",
                 style: GoogleFonts.notoSansThai(fontSize: 18)),
             Spacer(),
 

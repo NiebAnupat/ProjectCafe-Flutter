@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cafeapp/components/class/Orders.dart';
+import 'package:cafeapp/components/class/Detail.dart';
 
-class OrdersList extends StatefulWidget {
+class DetailList extends StatelessWidget {
   String name;
   String price;
   String amount;
 
-  OrdersList(
+  DetailList(
       {super.key,
       required this.name,
       required this.price,
       required this.amount});
 
-  @override
-  State<OrdersList> createState() => _OrdersListState();
-}
-
-class _OrdersListState extends State<OrdersList> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,23 +23,17 @@ class _OrdersListState extends State<OrdersList> {
             color: Colors.grey.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 2),
+            offset: Offset(0, 2),
           ),
         ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(1.5),
         child: ListTile(
-          title:
-              Text(widget.name, style: GoogleFonts.notoSansThai(fontSize: 18)),
+          title: Text(name, style: GoogleFonts.notoSerifThai(fontSize: 18)),
           subtitle: Text(
-            "ราคา " + widget.price + " บาท " + "จำนวน " + widget.amount,
-            style: GoogleFonts.notoSansThai(fontSize: 15),
-          ),
-          // delete menu button
-          trailing: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.minimize),
+            "ราคา $price บาท" + " จำนวน $amount",
+            style: GoogleFonts.notoSerifThai(fontSize: 15),
           ),
         ),
       ),
