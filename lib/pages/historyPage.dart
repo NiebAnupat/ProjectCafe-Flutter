@@ -26,18 +26,18 @@ class _HistoryPageState extends State<HistoryPage> {
         child: Column(
           children: [
             // size box
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
             // Title
             Container(
-                margin: EdgeInsets.only(top: 20),
-                padding: EdgeInsets.only(
+                margin: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(
                   left: 20,
                 ),
                 child: Row(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                         radius: 35,
                         backgroundImage: AssetImage('assets/images/cappu.jpg')),
                     Text(

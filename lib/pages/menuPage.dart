@@ -4,24 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cafeapp/components/menuList.dart';
 import '../components/class/Menu.dart';
 
-// Stateful
-class MenuPage extends StatefulWidget {
-  const MenuPage({super.key});
-
-  @override
-  State<MenuPage> createState() => _MenuPageState();
-}
-
-class _MenuPageState extends State<MenuPage> {
-  //Menu list
-  List<Menu> menu = [
-    Menu("ลาเต้", "40"),
-    Menu("มอคค่า", "50"),
-    Menu("คาปูชิโน่", "60"),
-  ];
+class MenuPage extends StatelessWidget {
+  const MenuPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<Menu> menu = [
+      Menu("ลาเต้", "40"),
+      Menu("มอคค่า", "50"),
+      Menu("คาปูชิโน่", "60"),
+      Menu("ทดสอบ", "70"),
+    ];
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(5),
@@ -33,5 +27,6 @@ class _MenuPageState extends State<MenuPage> {
             }),
       ),
     );
+    ;
   }
 }

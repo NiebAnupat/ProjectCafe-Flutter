@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       if (index == 3) {
         Navigator.of(context, rootNavigator: true).pushReplacement(
-            MaterialPageRoute(builder: (context) => new LoginPage()));
+            MaterialPageRoute(builder: (context) => const LoginPage()));
       } else {
         _selectedIndex = index;
       }

@@ -12,8 +12,8 @@ class DetailPage extends StatelessWidget {
       // Title and back button
       appBar: AppBar(
         title: Text(
-          "           รายละเอียด",
-          style: GoogleFonts.notoSerifThai(fontSize: 25),
+          "รายละเอียด",
+          style: GoogleFonts.notoSansThai(fontSize: 25),
         ),
       ),
       // Content

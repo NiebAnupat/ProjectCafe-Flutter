@@ -1,20 +1,23 @@
 import 'package:cafeapp/components/loginButton.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+import 'homePage.dart';
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  //Login method
-  loginUser() {}
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    loginUser() {
+      if (kDebugMode) {
+        print("Login");
+      }
+      Navigator.push(
+          context, MaterialPageRoute(builder: (ctx) => const HomePage()));
+    }
+
     return Scaffold(
         backgroundColor: Colors.brown[200],
         body: SafeArea(
@@ -68,7 +71,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 12),
-
                   // Password input
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -87,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "รหัสผ่าน",
-                                hintStyle: GoogleFonts.notoSerifThai()),
+                                hintStyle: GoogleFonts.notoSansThai()),
                           ),
                         ),
                       ),
