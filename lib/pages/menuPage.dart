@@ -1,7 +1,5 @@
 import 'package:cafeapp/components/menuList.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:cafeapp/components/menuList.dart';
 import '../components/class/Menu.dart';
 
 class MenuPage extends StatelessWidget {
@@ -10,10 +8,10 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Menu> menu = [
-      Menu("ลาเต้", "40"),
-      Menu("มอคค่า", "50"),
-      Menu("คาปูชิโน่", "60"),
-      Menu("ทดสอบ", "70"),
+      Menu("ลาเต้", 40),
+      Menu("มอคค่า", 50),
+      Menu("คาปูชิโน่", 60),
+      Menu("ทดสอบ", 70),
     ];
 
     return Scaffold(

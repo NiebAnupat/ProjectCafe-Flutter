@@ -14,11 +14,29 @@ class OrdersPage extends StatefulWidget {
 
 class _OrdersPageState extends State<OrdersPage> {
   //Menu list
-  List<Orders> orders = [
-    Orders("ลาเต้", "40", "1"),
-    Orders("มอคค่า", "50", "2"),
-    Orders("คาปูชิโน่", "60", "3"),
+  final List<Orders> _orders = [
+    Orders("ลาเต้", 1, 1),
+    Orders("มอคค่า", 2, 2),
+    Orders("คาปูชิโน่", 30, 3),
   ];
+
+  //Total price
+  int _totalPrice = 0;
+
+  x2() {
+    for (var i = 0; i < _orders.length; i++) {
+      setState(() {
+        _orders[i].amount *= 2;
+      });
+      setState(() {
+        // calculate total price
+        _totalPrice = 0;
+        for (var i = 0; i < _orders.length; i++) {
+          _totalPrice += _orders[i].price * _orders[i].amount;
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +49,9 @@ class _OrdersPageState extends State<OrdersPage> {
               // List of orders
               Expanded(
                 child: ListView.builder(
-                  itemCount: orders.length,
+                  itemCount: _orders.length,
                   itemBuilder: (context, i) {
-                    Orders food = orders[i];
+                    Orders food = _orders[i];
                     return OrdersList(
                       name: food.name,
                       price: food.price,
@@ -49,25 +67,27 @@ class _OrdersPageState extends State<OrdersPage> {
 
       //container order button
       bottomNavigationBar: Container(
-        child: Row(
-          children: [
-            Text("  ราคารวม  บาท",
-                style: GoogleFonts.notoSansThai(fontSize: 18)),
-            Spacer(),
-
-            // Order button
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.brown,
-                  onPrimary: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              Text('ราคารวม $_totalPrice บาท',
+                  style: GoogleFonts.notoSansThai(fontSize: 18)),
+              Spacer(),
+              // Order button
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.brown,
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
-                ),
-                onPressed: () {},
-                child: Text("สั่งอาหาร ",
-                    style: GoogleFonts.notoSansThai(fontSize: 16))),
-          ],
+                  onPressed: x2,
+                  child: Text("สั่งอาหาร",
+                      style: GoogleFonts.notoSansThai(fontSize: 16))),
+            ],
+          ),
         ),
       ),
     );

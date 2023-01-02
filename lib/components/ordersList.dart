@@ -4,8 +4,8 @@ import 'package:cafeapp/components/class/Orders.dart';
 
 class OrdersList extends StatefulWidget {
   String name;
-  String price;
-  String amount;
+  int price;
+  int amount;
 
   OrdersList(
       {super.key,
@@ -38,7 +38,7 @@ class _OrdersListState extends State<OrdersList> {
           title:
               Text(widget.name, style: GoogleFonts.notoSansThai(fontSize: 18)),
           subtitle: Text(
-            "ราคา " + widget.price + " บาท " + "จำนวน " + widget.amount,
+            "ราคา ${widget.price} บาท จำนวน ${widget.amount}",
             style: GoogleFonts.notoSansThai(fontSize: 15),
           ),
           // delete menu button

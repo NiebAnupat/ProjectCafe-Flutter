@@ -1,6 +1,6 @@
 class historyMenu {
   String date;
-  String totalprice;
+  int totalprice;
 
   historyMenu(this.date, this.totalprice);
 }

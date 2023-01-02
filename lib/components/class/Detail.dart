@@ -1,7 +1,7 @@
 class Detail {
   String name;
-  String price;
-  String amount;
+  int price;
+  int amount;
 
   Detail(this.name, this.price, this.amount);
 }

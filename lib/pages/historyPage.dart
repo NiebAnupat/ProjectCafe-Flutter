@@ -13,10 +13,10 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> {
   //History List
-  List<historyMenu> history = [
-    historyMenu("2021-09-01", "100"),
-    historyMenu("2021-09-02", "200"),
-    historyMenu("2021-09-03", "300"),
+  List<historyMenu> _history = [
+    historyMenu("2021-09-01", 500),
+    historyMenu("2021-09-02", 200),
+    historyMenu("2021-09-03", 300),
   ];
 
   @override
@@ -51,9 +51,9 @@ class _HistoryPageState extends State<HistoryPage> {
               child: Padding(
                 padding: const EdgeInsets.all(5),
                 child: ListView.builder(
-                  itemCount: history.length,
+                  itemCount: _history.length,
                   itemBuilder: (context, i) {
-                    historyMenu keep = history[i];
+                    historyMenu keep = _history[i];
                     return HistoryList(
                         date: keep.date, totalprice: keep.totalprice);
                   },

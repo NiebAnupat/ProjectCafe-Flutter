@@ -4,8 +4,8 @@ import 'package:cafeapp/components/class/Detail.dart';
 
 class DetailList extends StatelessWidget {
   String name;
-  String price;
-  String amount;
+  int price;
+  int amount;
 
   DetailList(
       {super.key,

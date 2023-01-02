@@ -4,7 +4,7 @@ import 'package:cafeapp/pages/detailPage.dart';
 
 class HistoryList extends StatelessWidget {
   String date;
-  String totalprice;
+  int totalprice;
 
   HistoryList({super.key, required this.date, required this.totalprice});
 

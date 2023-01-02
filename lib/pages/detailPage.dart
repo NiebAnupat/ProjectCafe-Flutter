@@ -17,25 +17,24 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       // Content
-
       body: content(),
     );
   }
 
   Widget content() {
     // List of orders
-    List<Detail> detail = [
-      Detail("ลาเต้", "40", "1"),
-      Detail("มอคค่า", "50", "2"),
-      Detail("คาปูชิโน่", "60", "3"),
+    List<Detail> _detail = [
+      Detail("ลาเต้", 40, 1),
+      Detail("มอคค่า", 50, 2),
+      Detail("คาปูชิโน่", 60, 3),
     ];
 
     return Padding(
       padding: const EdgeInsets.all(5),
       child: ListView.builder(
-        itemCount: detail.length,
+        itemCount: _detail.length,
         itemBuilder: (context, i) {
-          Detail food = detail[i];
+          Detail food = _detail[i];
           return DetailList(
               name: food.name, price: food.price, amount: food.amount);
         },

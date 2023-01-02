@@ -1,7 +1,7 @@
 class Orders {
   String name;
-  String price;
-  String amount;
+  int price;
+  int amount;
 
   Orders(this.name, this.price, this.amount);
 }

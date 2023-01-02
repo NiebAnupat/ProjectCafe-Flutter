@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart ';
 
 class MenuList extends StatelessWidget {
   String name;
-  String price;
+  int price;
 
   MenuList({super.key, required this.name, required this.price});
 
