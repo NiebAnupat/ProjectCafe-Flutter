@@ -1,7 +1,7 @@
 import 'package:cafeapp/components/detailList.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cafeapp/components/class/Detail.dart';
+import 'package:cafeapp/models//Detail.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});

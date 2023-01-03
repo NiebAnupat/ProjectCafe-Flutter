@@ -1,44 +1,18 @@
 import 'package:cafeapp/components/ordersList.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cafeapp/components/class/Orders.dart';
+import 'package:cafeapp/models/Order.dart';
 import 'package:cafeapp/components/ordersList.dart';
 
-// Stateful
-class OrdersPage extends StatefulWidget {
-  const OrdersPage({super.key});
+import 'package:get/get.dart';
+import 'package:cafeapp/getX/order/logic.dart';
 
-  @override
-  State<OrdersPage> createState() => _OrdersPageState();
-}
+class OrdersPage extends StatelessWidget {
+  final List<Order> _orders = [Order(1, 'ลาเต้', 60, 1)];
+  final logic = Get.put(OrderLogic());
+  final state = Get.find<OrderLogic>().state;
 
-class _OrdersPageState extends State<OrdersPage> {
-  //Menu list
-  final List<Orders> _orders = [
-    Orders("ลาเต้", 1, 1),
-    Orders("มอคค่า", 2, 2),
-    Orders("คาปูชิโน่", 30, 3),
-  ];
-
-  //Total price
-  int _totalPrice = 0;
-
-  x2() {
-    for (var i = 0; i < _orders.length; i++) {
-      setState(() {
-        _orders[i].amount *= 2;
-      });
-      setState(() {
-        // calculate total price
-        _totalPrice = 0;
-        for (var i = 0; i < _orders.length; i++) {
-          _totalPrice += _orders[i].price * _orders[i].amount;
-        }
-      });
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -48,15 +22,24 @@ class _OrdersPageState extends State<OrdersPage> {
             children: [
               // List of orders
               Expanded(
-                child: ListView.builder(
-                  itemCount: _orders.length,
-                  itemBuilder: (context, i) {
-                    Orders food = _orders[i];
-                    return OrdersList(
-                      name: food.name,
-                      price: food.price,
-                      amount: food.amount,
-                    );
+                child: GetX<OrderLogic>(
+                  initState: (_) {},
+                  builder: (logic) {
+                    if (logic.orders.isEmpty) {
+                      return Center(
+                        child: Text('ไม่มีรายการสั่งซื้อ',
+                            style: GoogleFonts.notoSansThai(
+                                fontSize: 25,
+                                color: Colors.grey.withOpacity(0.8))),
+                      );
+                    } else {
+                      return ListView.builder(
+                        itemCount: logic.orders.length,
+                        itemBuilder: (context, i) {
+                          return OrdersList(orderMenu: logic.orders[i]);
+                        },
+                      );
+                    }
                   },
                 ),
               ),
@@ -71,8 +54,13 @@ class _OrdersPageState extends State<OrdersPage> {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              Text('ราคารวม $_totalPrice บาท',
-                  style: GoogleFonts.notoSansThai(fontSize: 18)),
+              GetX<OrderLogic>(
+                initState: (_) {},
+                builder: (logic) {
+                  return Text('ราคารวม ${logic.total} บาท',
+                      style: GoogleFonts.notoSansThai(fontSize: 18));
+                },
+              ),
               Spacer(),
               // Order button
               ElevatedButton(
@@ -83,7 +71,7 @@ class _OrdersPageState extends State<OrdersPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: x2,
+                  onPressed: () {},
                   child: Text("สั่งอาหาร",
                       style: GoogleFonts.notoSansThai(fontSize: 16))),
             ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cafeapp/components/class/History.dart';
+import 'package:cafeapp/models/History.dart';
 import 'package:cafeapp/components/historyList.dart';
 
 // Stateful

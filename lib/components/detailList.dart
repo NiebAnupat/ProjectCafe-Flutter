@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cafeapp/components/class/Detail.dart';
+import 'package:cafeapp/models/Detail.dart';
 
 class DetailList extends StatelessWidget {
   String name;
