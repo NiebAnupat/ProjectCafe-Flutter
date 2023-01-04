@@ -31,8 +31,8 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _buttonAction = [
     MenuPage(),
     OrdersPage(),
-    const HistoryPage(),
-    const LoginPage(),
+    HistoryPage(),
+    LoginPage(),
   ];
 
   @override

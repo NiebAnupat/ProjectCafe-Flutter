@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cafeapp/models/History.dart';
 import 'package:cafeapp/components/historyList.dart';
 
+import '../getX/history/logic.dart';
+import '../getX/user/logic.dart';
+
 // Stateful
-class HistoryPage extends StatefulWidget {
-  const HistoryPage({super.key});
+class HistoryPage extends StatelessWidget {
+  HistoryPage({super.key});
 
-  @override
-  State<HistoryPage> createState() => _HistoryPageState();
-}
+  final logic = Get.put(HistoryLogic());
+  final userLogic = Get.put(UserLogic());
 
-class _HistoryPageState extends State<HistoryPage> {
-  //History List
-  List<historyMenu> _history = [
-    historyMenu("2021-09-01", 500),
-    historyMenu("2021-09-02", 200),
-    historyMenu("2021-09-03", 300),
-  ];
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -35,27 +31,47 @@ class _HistoryPageState extends State<HistoryPage> {
                 padding: const EdgeInsets.only(
                   left: 20,
                 ),
-                child: Row(
-                  children: [
-                    const CircleAvatar(
-                        radius: 35,
-                        backgroundImage: AssetImage('assets/images/cappu.jpg')),
-                    Text(
-                      "  " + "นางสาว สมชาย สมบัติ",
-                      style: GoogleFonts.notoSansThai(fontSize: 25),
-                    ),
-                  ],
+                child: GetX<UserLogic>(
+                  builder: (userLogic) {
+                    return Row(
+                      children: [
+                        const CircleAvatar(
+                            radius: 35,
+                            backgroundImage:
+                                AssetImage('assets/images/cappu.jpg')),
+                        Text(
+                          '\t\t\t\t${userLogic.name.value}',
+                          style: GoogleFonts.notoSansThai(fontSize: 25),
+                        ),
+                      ],
+                    );
+                  },
                 )),
             // List of orders
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(5),
-                child: ListView.builder(
-                  itemCount: _history.length,
-                  itemBuilder: (context, i) {
-                    historyMenu keep = _history[i];
-                    return HistoryList(
-                        date: keep.date, totalprice: keep.totalprice);
+                child: GetX<HistoryLogic>(
+                  builder: (logic) {
+                    if (logic.isLoading.value) {
+                      return const GFLoader(
+                        size: 100,
+                      );
+                    } else if (logic.history.isEmpty) {
+                      return Center(
+                        child: Text('ไม่มีรายการสั่งซื้อ',
+                            style: GoogleFonts.notoSansThai(
+                                fontSize: 25,
+                                color: Colors.grey.withOpacity(0.8))),
+                      );
+                    } else {
+                      return ListView.builder(
+                          itemCount: logic.history.length,
+                          itemBuilder: (context, i) {
+                            historyMenu keep = logic.history[i];
+                            return HistoryList(keep: keep);
+                          });
+                    }
                   },
                 ),
               ),

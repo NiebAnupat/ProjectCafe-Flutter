@@ -14,12 +14,16 @@ class MenuPage extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         child: GetX<MenuLogic>(
           builder: (logic) {
-            return ListView.builder(
-                itemCount: logic.menu.length,
-                itemBuilder: (context, i) {
-                  Menu food = logic.menu[i];
-                  return MenuList(menu: food);
-                });
+            if (logic.isLoading.value) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return ListView.builder(
+                  itemCount: logic.menu.length,
+                  itemBuilder: (context, i) {
+                    Menu food = logic.menu[i];
+                    return MenuList(menu: food);
+                  });
+            }
           },
         ),
       ),

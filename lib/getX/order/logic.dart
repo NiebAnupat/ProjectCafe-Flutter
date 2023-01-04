@@ -5,6 +5,7 @@ import '../../models/Order.dart';
 class OrderLogic extends GetxController {
   var orders = [].obs;
   var total = 0.obs;
+  var isLoading = false.obs;
 
   addOrder(Order order) {
     // check if the order is already in the list by id
@@ -40,5 +41,14 @@ class OrderLogic extends GetxController {
 
     // update the total
     total.value -= order.price;
+  }
+
+  clearOrders() {
+    orders.clear();
+    total.value = 0;
+  }
+
+  setLoading(bool value) {
+    isLoading.value = value;
   }
 }

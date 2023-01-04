@@ -1,12 +1,19 @@
+import 'package:cafeapp/repository/menu/MenuRepository.dart';
 import 'package:get/get.dart';
 
 import '../../models/Menu.dart';
 
 class MenuLogic extends GetxController {
-  RxList<Menu> menu = [
-    Menu(1, "ลาเต้", 40),
-    Menu(2, "มอคค่า", 50),
-    Menu(3, "คาปูชิโน่", 60),
-    Menu(4, "ทดสอบ", 70),
-  ].obs;
+  RxList<Menu> menu = <Menu>[].obs;
+  var isLoading = true.obs;
+
+  @override
+  Future<void> onInit() async {
+    super.onInit();
+    var menu = await MenuRepository.allMenu;
+    // add menu to list
+    this.menu.addAll(menu);
+    // set loading to false
+    isLoading.value = false;
+  }
 }

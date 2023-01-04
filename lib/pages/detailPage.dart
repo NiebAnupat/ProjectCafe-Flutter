@@ -1,10 +1,16 @@
 import 'package:cafeapp/components/detailList.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cafeapp/models//Detail.dart';
+import 'package:cafeapp/models/Detail.dart';
+
+import '../getX/history/logic.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+  List<Detail> detail;
+
+  DetailPage({required this.detail});
 
   @override
   Widget build(BuildContext context) {
@@ -17,29 +23,16 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       // Content
-      body: content(),
+      body: Padding(
+          padding: const EdgeInsets.all(5),
+          child: ListView.builder(
+            itemCount: detail.length,
+            itemBuilder: (context, i) {
+              Detail food = detail[i];
+              return DetailList(
+                  name: food.name, price: food.price, amount: food.quantity);
+            },
+          )),
     );
-  }
-
-  Widget content() {
-    // List of orders
-    List<Detail> _detail = [
-      Detail("ลาเต้", 40, 1),
-      Detail("มอคค่า", 50, 2),
-      Detail("คาปูชิโน่", 60, 3),
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: ListView.builder(
-        itemCount: _detail.length,
-        itemBuilder: (context, i) {
-          Detail food = _detail[i];
-          return DetailList(
-              name: food.name, price: food.price, amount: food.amount);
-        },
-      ),
-    );
-    ;
   }
 }

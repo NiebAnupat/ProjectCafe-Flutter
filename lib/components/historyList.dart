@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cafeapp/pages/detailPage.dart';
 
-class HistoryList extends StatelessWidget {
-  String date;
-  int totalprice;
+import '../models/History.dart';
 
-  HistoryList({super.key, required this.date, required this.totalprice});
+class HistoryList extends StatelessWidget {
+  historyMenu keep;
+
+  HistoryList({super.key, required this.keep});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,10 @@ class HistoryList extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(1.5),
         child: ListTile(
-          title: Text("วันที่ $date",
+          title: Text("วันที่ ${keep.date} | ${keep.time} น.",
               style: GoogleFonts.notoSansThai(fontSize: 18)),
           subtitle: Text(
-            "ราคา $totalprice บาท",
+            "ราคา ${keep.totalprice} บาท",
             style: GoogleFonts.notoSansThai(fontSize: 15),
           ),
 
@@ -36,7 +37,8 @@ class HistoryList extends StatelessWidget {
           trailing: Icon(Icons.arrow_forward_ios),
           onTap: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailPage()),
+            MaterialPageRoute(
+                builder: (context) => DetailPage(detail: keep.detail)),
           ),
         ),
       ),

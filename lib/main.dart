@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cafeapp/repository/GoogleSheetProvider.dart';
 import 'package:flutter/material.dart';
 import 'pages/loginPage.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  await GoogleSheetProvider.init();
   runApp(GetMaterialApp(home: MyApp()));
 }
 

@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
+import 'package:cafeapp/models/Detail.dart';
 
-class Order extends Equatable {
+class Order {
   int menuId;
   String name;
   int price;
@@ -8,6 +8,18 @@ class Order extends Equatable {
 
   Order(this.menuId, this.name, this.price, this.quantity);
 
-  @override
-  List<Object> get props => [menuId, name, price, quantity];
+  Map<String, dynamic> toJSON() => {
+        'id': 0,
+        'menuName': name,
+        'qty': quantity,
+        'unitPrice': price,
+        'subTotal': price * quantity,
+        'orderID': 0,
+      };
+
+  static Detail fromJSON(Map<String, dynamic> json) => Detail(
+        json['menuName'],
+        int.parse(json['unitPrice']),
+        int.parse(json['qty']),
+      );
 }
