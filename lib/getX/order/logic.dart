@@ -1,11 +1,8 @@
 import 'package:get/get.dart';
 
 import '../../models/Order.dart';
-import 'state.dart';
 
 class OrderLogic extends GetxController {
-  final OrderState state = OrderState();
-
   var orders = [].obs;
   var total = 0.obs;
 

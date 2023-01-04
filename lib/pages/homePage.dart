@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _buttonAction = [
-    const MenuPage(),
+    MenuPage(),
     OrdersPage(),
     const HistoryPage(),
     const LoginPage(),

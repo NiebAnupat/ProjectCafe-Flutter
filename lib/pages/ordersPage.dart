@@ -9,9 +9,7 @@ import 'package:get/get.dart';
 import 'package:cafeapp/getX/order/logic.dart';
 
 class OrdersPage extends StatelessWidget {
-  final List<Order> _orders = [Order(1, 'ลาเต้', 60, 1)];
   final logic = Get.put(OrderLogic());
-  final state = Get.find<OrderLogic>().state;
 
   Widget build(BuildContext context) {
     return Scaffold(
