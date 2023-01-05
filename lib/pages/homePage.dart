@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       if (index == 3) {
         Navigator.of(context, rootNavigator: true).pushReplacement(
-            MaterialPageRoute(builder: (context) => const LoginPage()));
+            MaterialPageRoute(builder: (context) => LoginPage()));
       } else {
         _selectedIndex = index;
       }
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const LoginPage()),
+          MaterialPageRoute(builder: (context) => LoginPage()),
         );
       },
       icon: const Icon(Icons.logout),

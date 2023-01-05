@@ -5,4 +5,6 @@ class HistoryDetailFields {
   static const String unitPrice = 'unitPrice';
   static const String subTotal = 'subTotal';
   static const String orderID = 'orderID';
+  static List<String> getFields() =>
+      [id, menuName, qty, unitPrice, subTotal, orderID];
 }

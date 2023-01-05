@@ -33,12 +33,12 @@ class HistoryPage extends StatelessWidget {
                 ),
                 child: GetX<UserLogic>(
                   builder: (userLogic) {
+                    final imageURL = userLogic.imageURLString;
                     return Row(
                       children: [
-                        const CircleAvatar(
+                        CircleAvatar(
                             radius: 35,
-                            backgroundImage:
-                                AssetImage('assets/images/cappu.jpg')),
+                            backgroundImage: NetworkImage(imageURL)),
                         Text(
                           '\t\t\t\t${userLogic.name.value}',
                           style: GoogleFonts.notoSansThai(fontSize: 25),

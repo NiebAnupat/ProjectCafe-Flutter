@@ -22,12 +22,14 @@ class GoogleSheetProvider {
   static Worksheet? _menuSheet;
   static Worksheet? _orderSheet;
   static Worksheet? _orderdetailSheet;
+  static Worksheet? _employeeSheet;
 
   static Future init() async {
     final spreadsheet = await _gsheets.spreadsheet(_spreadsheetId);
     _menuSheet = spreadsheet.worksheetByTitle('menu');
     _orderSheet = spreadsheet.worksheetByTitle('orders');
     _orderdetailSheet = spreadsheet.worksheetByTitle('orderdetail');
+    _employeeSheet = spreadsheet.worksheetByTitle('employee');
   }
 
   static Future<Worksheet> get menuSheet async {
@@ -49,5 +51,12 @@ class GoogleSheetProvider {
       await init();
     }
     return _orderdetailSheet!;
+  }
+
+  static Future<Worksheet> get employeeSheet async {
+    if (_employeeSheet == null) {
+      await init();
+    }
+    return _employeeSheet!;
   }
 }

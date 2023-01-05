@@ -1,21 +1,33 @@
 import 'package:cafeapp/components/loginButton.dart';
+import 'package:cafeapp/repository/employee/EmployeeRepository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../getX/user/logic.dart';
 import 'homePage.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
+  final userLogic = Get.put(UserLogic());
   @override
   Widget build(BuildContext context) {
-    loginUser() {
-      if (kDebugMode) {
-        print("Login");
+    final idController = TextEditingController();
+    final passwordController = TextEditingController();
+
+    loginUser() async {
+      final user = await EmployeeRepository.login(
+          idController.text, passwordController.text);
+      if (user.name != '') {
+        await userLogic.saveUser(user.id, user.name, user.imageURL);
+        Get.off(HomePage());
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Login failed'),
+          ),
+        );
       }
-      Navigator.push(
-          context, MaterialPageRoute(builder: (ctx) => const HomePage()));
     }
 
     return Scaffold(
@@ -62,6 +74,7 @@ class LoginPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
+                          controller: idController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "รหัสพนักงาน",
@@ -85,6 +98,7 @@ class LoginPage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 20.0),
                           child: TextField(
+                            controller: passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
                                 border: InputBorder.none,

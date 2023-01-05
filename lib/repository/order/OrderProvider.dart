@@ -38,8 +38,6 @@ class OrderProvider {
     // orderData to json
     var orderDataJson = orderData.values.map((v) => v).toList();
 
-    print(orderDataJson);
-
     // insert order data
     await orderSheet.values.appendRow(orderDataJson);
 
