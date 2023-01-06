@@ -34,15 +34,21 @@ class UserLogic extends GetxController {
   }
 
   Future loadUser() async {
-    isLoading.value = true;
     // load from local storage by shared_preferences
-    final prefs = await SharedPreferences.getInstance();
-    final id = prefs.getString('id');
-    final user = await EmployeeRepository.FetchCurrentUserById(id!);
-    if (user.name != '') {
-      name.value = user.name;
-      imageURL.value = user.imageURL;
-      Get.offAll(() => const HomePage());
+    try {
+      isLoading.value = true;
+      final prefs = await SharedPreferences.getInstance();
+      final id = prefs.getString('id');
+      final user = await EmployeeRepository.FetchCurrentUserById(id!);
+      if (user.name != '') {
+        name.value = user.name;
+        imageURL.value = user.imageURL;
+        Get.offAll(() => const HomePage());
+      }
+    } catch (e) {
+      // TODO
+      logout();
+    } finally {
       isLoading.value = false;
     }
   }
@@ -51,6 +57,7 @@ class UserLogic extends GetxController {
     isLoading.value = true;
     // clear local storage by shared_preferences
     final prefs = await SharedPreferences.getInstance();
+    prefs.remove('id');
     prefs.remove('name');
     prefs.remove('imageURL');
     name.value = "";

@@ -18,14 +18,18 @@ class EmployeeProvider {
 
   static Future FetchCurrentUserById(String id) async {
     // fetch data from google sheet
-    final employeeSheet = await GoogleSheetProvider.employeeSheet;
-    var allRows = await employeeSheet.values.map.allRows();
-    if (allRows == null) {
-      return null;
-    }
-    var user =
-        allRows.map((e) => User.fromJSON(e)).firstWhere((e) => e.id == id);
+    try {
+      final employeeSheet = await GoogleSheetProvider.employeeSheet;
+      var allRows = await employeeSheet.values.map.allRows();
+      if (allRows == null) {
+        return null;
+      }
+      var user =
+          allRows.map((e) => User.fromJSON(e)).firstWhere((e) => e.id == id);
 
-    return user;
+      return user;
+    } catch (e) {
+      rethrow;
+    }
   }
 }

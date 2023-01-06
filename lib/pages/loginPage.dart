@@ -16,16 +16,33 @@ class LoginPage extends StatelessWidget {
     final passwordController = TextEditingController();
 
     loginUser() async {
-      final user = await EmployeeRepository.login(
-          idController.text, passwordController.text);
-      if (user.name != '') {
+      try {
+        final user = await EmployeeRepository.login(
+            idController.text, passwordController.text);
         await userLogic.saveUser(user.id, user.name, user.imageURL);
         Get.off(HomePage());
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Login failed'),
+      } catch (e) {
+        Get.snackbar(
+          'เข้าสู่ระบบไม่สำเร็จ',
+          'กรุณาตรวจสอบรหัสพนักงานและรหัสผ่าน',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+          titleText: Text(
+            'เข้าสู่ระบบไม่สำเร็จ',
+            style: GoogleFonts.notoSansThai(
+              fontSize: 18,
+              color: Colors.white,
+            ),
           ),
+          messageText: Text(
+            'กรุณาตรวจสอบรหัสพนักงานและรหัสผ่าน',
+            style: GoogleFonts.notoSansThai(
+              fontSize: 16,
+              color: Colors.white,
+            ),
+          ),
+          margin: const EdgeInsets.all(20),
         );
       }
     }

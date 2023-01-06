@@ -1,7 +1,10 @@
 import 'package:cafeapp/pages/historyPage.dart';
 import 'package:cafeapp/pages/ordersPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../getX/user/logic.dart';
 import 'loginPage.dart';
 import 'ordersPage.dart';
 import 'menuPage.dart';
@@ -16,12 +19,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final userLogic = Get.put(UserLogic());
 
   void _navigateBottomBar(int index) {
     setState(() {
       if (index == 3) {
-        Navigator.of(context, rootNavigator: true).pushReplacement(
-            MaterialPageRoute(builder: (context) => LoginPage()));
+        userLogic.logout();
+        Get.offAll(() => LoginPage());
       } else {
         _selectedIndex = index;
       }

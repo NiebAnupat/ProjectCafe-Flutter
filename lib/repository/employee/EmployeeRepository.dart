@@ -2,10 +2,18 @@ import 'EmployeeProvider.dart';
 
 class EmployeeRepository {
   static Future login(String id, String password) async {
-    return await EmployeeProvider.login(id, password);
+    try {
+      return await EmployeeProvider.login(id, password);
+    } catch (e, s) {
+      rethrow;
+    }
   }
 
   static Future FetchCurrentUserById(String id) async {
-    return await EmployeeProvider.FetchCurrentUserById(id);
+    try {
+      return await EmployeeProvider.FetchCurrentUserById(id);
+    } catch (e) {
+      rethrow;
+    }
   }
 }
