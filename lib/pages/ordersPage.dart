@@ -96,11 +96,53 @@ class OrdersPage extends StatelessWidget {
                               // set loading state
                               logic.setLoading(false);
                               // Show success message
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('สั่งซื้อเรียบร้อย'),
-                                ),
-                              );
+                              try {
+                                Get.snackbar(
+                                  'สำเร็จ',
+                                  'ทำรายการสั่งซื้อเสร็จสิ้น',
+                                  snackPosition: SnackPosition.TOP,
+                                  backgroundColor: Colors.green,
+                                  colorText: Colors.white,
+                                  titleText: Text(
+                                    'สำเร็จ',
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  messageText: Text(
+                                    'ทำรายการสั่งซื้อเสร็จสิ้น',
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  margin: const EdgeInsets.all(20),
+                                );
+                              } catch (e) {
+                                Get.snackbar(
+                                  'ไม่สำเร็จ',
+                                  'รายการสั่งซื้อเกิดข้อผิดพลาด',
+                                  snackPosition: SnackPosition.TOP,
+                                  backgroundColor: Colors.red,
+                                  colorText: Colors.white,
+                                  titleText: Text(
+                                    'ไม่สำเร็จ',
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  messageText: Text(
+                                    'รายการสั่งซื้อเกิดข้อผิดพลาด',
+                                    style: GoogleFonts.notoSansThai(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  margin: const EdgeInsets.all(20),
+                                );
+                              }
                             },
                       style: ElevatedButton.styleFrom(
                         primary:
