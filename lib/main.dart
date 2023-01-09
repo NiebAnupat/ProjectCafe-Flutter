@@ -6,7 +6,8 @@ import 'pages/loginPage.dart';
 import 'package:get/get.dart';
 
 void main() async {
-  await GoogleSheetProvider.init();
+  // await GoogleSheetProvider.init();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(GetMaterialApp(home: MyApp()));
 }
 
