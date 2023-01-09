@@ -21,6 +21,8 @@ class DetailPage extends StatelessWidget {
           "รายละเอียด",
           style: GoogleFonts.notoSansThai(fontSize: 25),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.brown,
       ),
       // Content
       body: Padding(
