@@ -10,6 +10,10 @@ class HistoryProvider {
     var detailRows = await detailSheet.values.map.allRows();
     return orderRows == null
         ? <historyMenu>[]
-        : orderRows.map((e) => historyMenu.fromJSON(e, detailRows!)).toList();
+        : orderRows
+            .map((e) => historyMenu.fromJSON(e, detailRows!))
+            .toList()
+            .reversed
+            .toList();
   }
 }
