@@ -17,10 +17,12 @@ class LoginPage extends StatelessWidget {
 
     loginUser() async {
       try {
+        userLogic.isLoading.value = true;
         final user = await EmployeeRepository.login(
             idController.text, passwordController.text);
         await userLogic.saveUser(user.id, user.name, user.imageURL);
-        Get.off(HomePage());
+        userLogic.isLoading.value = false;
+        Get.offAll(const HomePage());
       } catch (e) {
         Get.snackbar(
           'เข้าสู่ระบบไม่สำเร็จ',
