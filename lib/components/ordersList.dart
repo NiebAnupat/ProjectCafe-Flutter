@@ -33,6 +33,12 @@ class OrdersList extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(1.5),
             child: ListTile(
+              leading: Image.network(
+                'https://cdn.pixabay.com/photo/2019/11/11/15/32/coffee-4618705__340.jpg',
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
               title: Text(
                 orderMenu.name,
                 style: GoogleFonts.notoSansThai(fontSize: 18),
