@@ -30,10 +30,12 @@ class DetailList extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(1.5),
         child: ListTile(
-          title: Text(name, style: GoogleFonts.notoSerifThai(fontSize: 18)),
+          title: Text(name, style: GoogleFonts.notoSansThai(fontSize: 18)),
           subtitle: Text(
-            "ราคา $price บาท" + " จำนวน $amount",
-            style: GoogleFonts.notoSerifThai(fontSize: 15),
+            "ราคา $price บาท" +
+                " จำนวน $amount" +
+                " => รวม ${price * amount} บาท",
+            style: GoogleFonts.notoSansThai(fontSize: 15),
           ),
         ),
       ),

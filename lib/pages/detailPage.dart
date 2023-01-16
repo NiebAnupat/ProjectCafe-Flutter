@@ -32,7 +32,10 @@ class DetailPage extends StatelessWidget {
             itemBuilder: (context, i) {
               Detail food = detail[i];
               return DetailList(
-                  name: food.name, price: food.price, amount: food.quantity);
+                name: food.name,
+                price: food.price,
+                amount: food.quantity,
+              );
             },
           )),
     );

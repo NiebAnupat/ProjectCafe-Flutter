@@ -29,7 +29,7 @@ class HistoryList extends StatelessWidget {
           title: Text("วันที่ ${keep.date} | ${keep.time} น.",
               style: GoogleFonts.notoSansThai(fontSize: 18)),
           subtitle: Text(
-            "ราคา ${keep.totalprice} บาท",
+            "ราคารวม ${keep.totalprice} บาท",
             style: GoogleFonts.notoSansThai(fontSize: 15),
           ),
 
