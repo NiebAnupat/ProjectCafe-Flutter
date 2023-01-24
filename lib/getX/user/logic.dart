@@ -16,7 +16,6 @@ class UserLogic extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    print('UserLogic onInit');
     loadUser();
   }
 

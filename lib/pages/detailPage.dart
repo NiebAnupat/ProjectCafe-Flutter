@@ -12,6 +12,22 @@ class DetailPage extends StatelessWidget {
 
   DetailPage({required this.detail});
 
+  int totalPrice() {
+    int total = 0;
+    for (int i = 0; i < detail.length; i++) {
+      total += detail[i].price * detail[i].quantity;
+    }
+    return total;
+  }
+
+  int allAmount() {
+    int total = 0;
+    for (int i = 0; i < detail.length; i++) {
+      total += detail[i].quantity;
+    }
+    return total;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,16 +43,27 @@ class DetailPage extends StatelessWidget {
       // Content
       body: Padding(
           padding: const EdgeInsets.all(5),
-          child: ListView.builder(
-            itemCount: detail.length,
-            itemBuilder: (context, i) {
-              Detail food = detail[i];
-              return DetailList(
-                name: food.name,
-                price: food.price,
-                amount: food.quantity,
-              );
-            },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: detail.length,
+                  itemBuilder: (context, i) {
+                    Detail food = detail[i];
+                    return DetailList(
+                      name: food.name,
+                      price: food.price,
+                      amount: food.quantity,
+                    );
+                  },
+                ),
+              ),
+              Text("จำนวน ${allAmount()} รายการ",
+                  style: GoogleFonts.notoSansThai(fontSize: 17)),
+              Text("ราคารวม ${totalPrice()} บาท",
+                  style: GoogleFonts.notoSansThai(fontSize: 17)),
+            ],
           )),
     );
   }
