@@ -5,8 +5,9 @@ class Order {
   String name;
   int price;
   int quantity;
+  String image;
 
-  Order(this.menuId, this.name, this.price, this.quantity);
+  Order(this.menuId, this.name, this.price, this.quantity, this.image);
 
   Map<String, dynamic> toJSON() => {
         'id': 0,

@@ -51,8 +51,8 @@ class MenuList extends StatelessWidget {
           // Add menu button
           trailing: IconButton(
             onPressed: () {
-              orderController
-                  .addOrder(Order(menu.id, menu.name, menu.price, 1));
+              orderController.addOrder(
+                  Order(menu.id, menu.name, menu.price, 1, menu.image));
             },
             icon: const Icon(Icons.add),
           ),

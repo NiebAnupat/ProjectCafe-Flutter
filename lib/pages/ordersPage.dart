@@ -82,8 +82,12 @@ class OrdersPage extends StatelessWidget {
 
                               // RxList<dynamic> to to List<Order>
                               List<Order> orders = logic.orders
-                                  .map((order) => Order(order.menuId,
-                                      order.name, order.price, order.quantity))
+                                  .map((order) => Order(
+                                      order.menuId,
+                                      order.name,
+                                      order.price,
+                                      order.quantity,
+                                      order.image))
                                   .toList();
 
                               // Submit order

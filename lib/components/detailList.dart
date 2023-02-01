@@ -31,11 +31,18 @@ class DetailList extends StatelessWidget {
         padding: const EdgeInsets.all(1.5),
         child: ListTile(
           title: Text(name, style: GoogleFonts.notoSansThai(fontSize: 18)),
-          subtitle: Text(
-            "ราคา $price บาท" +
-                " จำนวน $amount" +
-                " => รวม ${price * amount} บาท",
-            style: GoogleFonts.notoSansThai(fontSize: 15),
+          subtitle: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "ราคาต่อหน่วย $price บาท",
+                style: GoogleFonts.notoSansThai(fontSize: 15),
+              ),
+              Text("จำนวน $amount",
+                  style: GoogleFonts.notoSansThai(fontSize: 15)),
+              Text(" รวม ${price * amount} บาท",
+                  style: GoogleFonts.notoSansThai(fontSize: 15)),
+            ],
           ),
         ),
       ),

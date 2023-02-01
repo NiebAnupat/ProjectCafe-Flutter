@@ -28,7 +28,7 @@ class OrderLogic extends GetxController {
   deleteOrder(Order order) {
     int index = orders.indexWhere((element) => element.menuId == order.menuId);
     // decrease the quantity by id
-    var newOrder = Order(0, '', 0, 0);
+    var newOrder = Order(0, '', 0, 0, '');
     newOrder.menuId = orders[index].menuId;
     newOrder.name = orders[index].name;
     newOrder.price = orders[index].price;
